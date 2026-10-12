@@ -1,0 +1,248 @@
+/* Дизайн: светлый, дружелюбный. Лес — надёжность, оранжевый — действие, мята — подложки. */
+:root {
+  --forest: #0d4a3a;
+  --forest-2: #14614c;
+  --brand: #14614c;
+  --mint: #e6f2ec;
+  --mint-2: #cfe6da;
+  --bg: #f5faf7;
+  --white: #fff;
+  --ink: #12211b;
+  --muted: #4f6259;
+  --accent: #ff7a1a;
+  --accent-hover: #ff9140;
+  --on-accent: #12211b;
+  --line: #cfe0d8;
+
+  --font-head: 'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --wrap: 1180px;
+  --gut: clamp(16px, 4vw, 40px);
+  --radius: 12px;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  margin: 0 0 0.55em;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(1.9rem, 4.6vw, 3.3rem);
+  font-weight: 700;
+}
+h2 {
+  font-size: clamp(1.45rem, 2.8vw, 2.1rem);
+  font-weight: 600;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+p {
+  margin: 0 0 1em;
+  max-width: 66ch;
+}
+
+a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--forest);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--forest);
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gut), var(--wrap));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(48px, 7vw, 88px);
+}
+.section--white {
+  background: var(--white);
+}
+.section--dark {
+  background: var(--forest);
+  color: #e3f1ea;
+}
+.section--dark h2,
+.section--dark h3 {
+  color: var(--white);
+}
+.section--dark p {
+  color: #bcd9cc;
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: 600 1rem var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.btn--primary:hover {
+  background: var(--accent-hover);
+  color: var(--on-accent);
+}
+.btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+.btn--ghost:hover {
+  background: rgba(13, 74, 58, 0.08);
+  color: inherit;
+}
+.btn--dark {
+  background: var(--forest);
+  color: var(--white);
+}
+.btn--dark:hover {
+  background: var(--forest-2);
+  color: var(--white);
+}
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Заголовок страницы */
+.page-head {
+  background: var(--mint);
+  padding-block: clamp(32px, 5vw, 60px);
+  border-bottom: 1px solid var(--mint-2);
+}
+.page-head h1 {
+  margin-bottom: 0.35em;
+  font-size: clamp(1.7rem, 3.8vw, 2.7rem);
+}
+.page-head p {
+  color: var(--muted);
+  margin: 0;
+}
+.crumbs {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+.crumbs a {
+  color: var(--forest);
+}
+
+/* Формы */
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.field input,
+.field select,
+.field textarea {
+  font: inherit;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+  width: 100%;
+}
+.field textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--brand);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 74, 82, 0.25);
+}
+.field .err {
+  color: #b3261e;
+  font-size: 0.88rem;
+}
+.field input.invalid {
+  border-color: #b3261e;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
